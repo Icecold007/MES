@@ -33,7 +33,6 @@ exports.saveProductionEntry = async (req, res) => {
       });
     }
 
-    // Double-check if the barcode already exists before attempting insert
     const { data: duplicateCheck } = await supabase
       .from("production_data")
       .select("barcode_id")
