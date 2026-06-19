@@ -21,7 +21,6 @@ async function executeTelemetrySearch() {
   const barcode = searchInput.value.trim();
   if (!barcode) return;
 
-  // Clear current display elements before rendering new results
   reportDisplay.style.display = "none";
   noDataAlert.style.display = "none";
 
@@ -51,7 +50,6 @@ async function executeTelemetrySearch() {
       return;
     }
 
-    // Populate data into read-only display table cells
     const drawItem = result.data;
     document.getElementById("lblBarcode").textContent = drawItem.barcode_id;
     document.getElementById("lblPreform").textContent = drawItem.preform_id;
@@ -70,7 +68,6 @@ async function executeTelemetrySearch() {
       ? drawItem.remarks
       : "No special quality remarks recorded.";
 
-    // Reveal the read-only reporting table layout container element
     reportDisplay.style.display = "block";
   } catch (err) {
     alert("Failed to connect to backend engine processing network interfaces.");

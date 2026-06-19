@@ -98,9 +98,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// Logout Request Endpoint Handler
 exports.logout = async (req, res) => {
-  // Since tokens are stateless and tracked memory-side within the browser cache client,
-  // we simply send a verification response back to command the frontend to drop its local token.
   return res.status(200).json({ message: "Session logged out successfully." });
 };

@@ -10,7 +10,6 @@ if (!supabaseUrl || !supabaseServiceKey) {
   );
 }
 
-// Instantiate the master administrative database client
 const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
     persistSession: false,

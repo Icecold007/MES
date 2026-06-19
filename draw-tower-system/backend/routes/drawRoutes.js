@@ -3,7 +3,6 @@ const router = express.Router();
 const drawController = require("../controllers/drawController");
 const verifyToken = require("../middleware/authMiddleware");
 
-// Secure application entry tracking routes
 router.post("/save", verifyToken, drawController.saveProductionEntry);
 router.get(
   "/report/:barcodeId",
