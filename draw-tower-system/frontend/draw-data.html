@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Draw Data Log Entry</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Draw Tower Production</h2>
+      <div class="user-zone">
+        <span id="userDisplay">Admin: --</span>
+        <button class="logout-btn" id="logoutBtn">Terminal Logout</button>
+      </div>
+    </header>
+    <div class="main-layout">
+      <aside class="sidebar">
+        <ul class="sidebar-nav">
+          <li><a href="dashboard.html">Overview</a></li>
+          <li><a href="draw-data.html" class="active">Draw Entry Form</a></li>
+          <li><a href="report.html">Telemetry Report</a></li>
+        </ul>
+      </aside>
+      <main class="content-viewport">
+        <div style="margin-bottom: 2rem">
+          <h2>Log Production Metrics</h2>
+          <p style="color: #94a3b8">
+            Record drawn batches immediately upon runtime completion.
+          </p>
+        </div>
+        <div id="msgBox" class="msg"></div>
+        <div class="form-card">
+          <form id="drawDataForm">
+            <div class="form-grid">
+              <div class="full-width form-field">
+                <label
+                  >Draw Barcode ID Input Method (Fill only one option)</label
+                >
+                <div class="barcode-box-wrapper">
+                  <div style="flex: 1">
+                    <span class="unit-tag">Auto Generated Format</span>
+                    <input
+                      type="text"
+                      id="barcodeAuto"
+                      placeholder="e.g. AUTO-100293"
+                    />
+                  </div>
+                  <div
+                    style="color: #475569; font-weight: bold; padding-top: 15px"
+                  >
+                    OR
+                  </div>
+                  <div style="flex: 1">
+                    <span class="unit-tag">Manual Structural Tag</span>
+                    <input
+                      type="text"
+                      id="barcodeManual"
+                      placeholder="e.g. MAN-98374"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Preform Glass ID</label>
+                <input
+                  type="text"
+                  id="preformId"
+                  required
+                  placeholder="e.g. PRE-G7-002"
+                />
+              </div>
+              <div class="form-field">
+                <label>Active Machine Unit</label>
+                <select id="machine" required>
+                  <option value="" disabled selected>
+                    Choose Tower Cluster
+                  </option>
+                  <option value="DT01">DT01 (Tower Alpha)</option>
+                  <option value="DT02">DT02 (Tower Beta)</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label>Operator Name</label>
+                <input
+                  type="text"
+                  id="operatorName"
+                  required
+                  placeholder="Technician name"
+                />
+              </div>
+              <div class="form-field">
+                <label>Shift Assignment</label>
+                <div class="radio-group">
+                  <label class="radio-option"
+                    ><input type="radio" name="shift" value="A" required />
+                    Shift A</label
+                  >
+                  <label class="radio-option"
+                    ><input type="radio" name="shift" value="B" /> Shift
+                    B</label
+                  >
+                  <label class="radio-option"
+                    ><input type="radio" name="shift" value="C" /> Shift
+                    C</label
+                  >
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Product Specification Type</label>
+                <select id="productType" required>
+                  <option value="" disabled selected>
+                    Select Core Classification
+                  </option>
+                  <option value="G652D">G652D Single-Mode</option>
+                  <option value="G657A1 190">G657A1 190µm</option>
+                  <option value="G657A1 200">G657A1 200µm</option>
+                  <option value="G657A2 190">G657A2 190µm</option>
+                  <option value="G657A2 200">G657A2 200µm</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label>Core Fiber Count</label>
+                <input
+                  type="number"
+                  id="fiberCount"
+                  required
+                  min="1"
+                  placeholder="e.g. 4, 12, 24"
+                />
+              </div>
+              <div class="form-field">
+                <label>Produced Component Length</label>
+                <div>
+                  <input
+                    type="number"
+                    id="producedLength"
+                    required
+                    step="0.01"
+                    min="0"
+                    placeholder="0.00"
+                  />
+                  <div class="unit-tag">Measured Unit: Meters (M)</div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Production Run Date</label>
+                <input type="date" id="productionDate" required />
+              </div>
+              <div class="form-field">
+                <label>Production Step Time Timestamp</label>
+                <input
+                  type="text"
+                  id="productionTime"
+                  required
+                  placeholder="e.g. 14:32:00 or Shift-Mid"
+                />
+              </div>
+              <div class="full-width form-field">
+                <label>Shift Supervisor Engineering Remarks (Optional)</label>
+                <textarea
+                  id="remarks"
+                  rows="3"
+                  placeholder="Log any speed drops, tension changes, or cladding observations..."
+                ></textarea>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn"
+              id="submitBtn"
+              style="width: auto; padding: 0.75rem 3rem; float: right"
+            >
+              Save Production Data Row
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="js/drawData.js"></script>
+  </body>
+</html>

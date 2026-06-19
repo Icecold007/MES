@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Production Tracing Audit Report</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Draw Tower Production</h2>
+      <div class="user-zone">
+        <span id="userDisplay">Admin: --</span>
+        <button class="logout-btn" id="logoutBtn">Terminal Logout</button>
+      </div>
+    </header>
+    <div class="main-layout">
+      <aside class="sidebar">
+        <ul class="sidebar-nav">
+          <li><a href="dashboard.html">Overview</a></li>
+          <li><a href="draw-data.html">Draw Entry Form</a></li>
+          <li><a href="report.html" class="active">Telemetry Report</a></li>
+        </ul>
+      </aside>
+      <main class="content-viewport">
+        <div style="margin-bottom: 2rem">
+          <h2>Quality Telemetry & Batch Audit Lookups</h2>
+          <p style="color: #94a3b8">
+            Enter a specific Barcode ID index tracking sequence key to fetch
+            historical execution summaries.
+          </p>
+        </div>
+
+        <div class="report-search-panel">
+          <div class="form-field" style="flex: 1">
+            <label>Target Audit Barcode ID Tag</label>
+            <input
+              type="text"
+              id="searchBarcode"
+              placeholder="Scan or type precise text barcode..."
+            />
+          </div>
+          <button
+            class="btn"
+            id="searchBtn"
+            style="width: auto; height: 46px; margin: 0; padding: 0 2rem"
+          >
+            Query Database Engine
+          </button>
+        </div>
+
+        <div id="noDataAlert" class="no-data-alert">
+          <h3>No Data Found</h3>
+          <p style="margin-top: 0.5rem">
+            The requested barcode structural sequence key does not point to any
+            logged record within the application history database.
+          </p>
+        </div>
+
+        <div id="reportDisplay" class="report-data-display">
+          <h3
+            style="
+              color: #38bdf8;
+              margin-bottom: 1rem;
+              border-bottom: 1px solid #334155;
+              padding-bottom: 0.5rem;
+            "
+          >
+            Structural Verification Matrix (Read Only)
+          </h3>
+          <table class="report-table">
+            <tr>
+              <th>Component Barcode ID</th>
+              <td id="lblBarcode">--</td>
+            </tr>
+            <tr>
+              <th>Preform Component Core</th>
+              <td id="lblPreform">--</td>
+            </tr>
+            <tr>
+              <th>Tower Node Machine</th>
+              <td id="lblMachine">--</td>
+            </tr>
+            <tr>
+              <th>Operator Shift Engineer</th>
+              <td id="lblOperator">--</td>
+            </tr>
+            <tr>
+              <th>Assigned Run Shift</th>
+              <td id="lblShift">--</td>
+            </tr>
+            <tr>
+              <th>Product Core Classification</th>
+              <td id="lblProduct">--</td>
+            </tr>
+            <tr>
+              <th>Core Array Fiber Count</th>
+              <td id="lblFiberCount">--</td>
+            </tr>
+            <tr>
+              <th>Total Output Length</th>
+              <td id="lblLength">--</td>
+            </tr>
+            <tr>
+              <th>Execution Log Date</th>
+              <td id="lblDate">--</td>
+            </tr>
+            <tr>
+              <th>Execution Process Time</th>
+              <td id="lblTime">--</td>
+            </tr>
+            <tr>
+              <th>Engineering Audit Remarks</th>
+              <td id="lblRemarks">--</td>
+            </tr>
+          </table>
+        </div>
+      </main>
+    </div>
+    <script src="js/report.js"></script>
+  </body>
+</html>

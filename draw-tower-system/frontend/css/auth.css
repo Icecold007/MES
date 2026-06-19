@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+body {
+  background: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.auth-container {
+  background: #1e293b;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid #334155;
+}
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #38bdf8;
+}
+p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+.form-group {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+label {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  color: #cbd5e1;
+}
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #0284c7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.btn:hover {
+  background: #0369a1;
+}
+.nav-link {
+  margin-top: 1.5rem;
+  display: block;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.msg {
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: none;
+  text-align: left;
+}
+.msg-error {
+  background: #7f1d1d;
+  color: #fca5a5;
+  border: 1px solid #b91c1c;
+}
+.msg-success {
+  background: #14532d;
+  color: #86efac;
+  border: 1px solid #15803d;
+}
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

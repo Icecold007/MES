@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Management Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Draw Tower Production</h2>
+      <div class="user-zone">
+        <span id="userDisplay">Admin: --</span>
+        <button class="logout-btn" id="logoutBtn">Terminal Logout</button>
+      </div>
+    </header>
+    <div class="main-layout">
+      <aside class="sidebar">
+        <ul class="sidebar-nav">
+          <li><a href="dashboard.html" class="active">Overview</a></li>
+          <li><a href="draw-data.html">Draw Entry Form</a></li>
+          <li><a href="report.html">Telemetry Report</a></li>
+        </ul>
+      </aside>
+      <main class="content-viewport">
+        <div class="welcome-hero">
+          <h1>
+            Welcome Back,
+            <span id="heroName" style="color: #38bdf8">Admin</span>
+          </h1>
+          <p>Industrial performance dashboard console.</p>
+        </div>
+        <div class="grid-menu">
+          <a href="draw-data.html" class="menu-card">
+            <h3>Draw Data Entry</h3>
+            <p>
+              Log active operational runtime variables, lengths, fiber product
+              metrics, and machine data codes directly into tracking storage.
+            </p>
+          </a>
+          <a href="report.html" class="menu-card">
+            <h3>Search Telemetry Logs</h3>
+            <p>
+              Instantly perform verified tracing audits by querying production
+              batches across database profiles via Barcode scan tags.
+            </p>
+          </a>
+        </div>
+      </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
