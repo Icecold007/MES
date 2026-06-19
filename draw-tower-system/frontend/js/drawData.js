@@ -1,4 +1,3 @@
-// Load base authorization routing hooks
 document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("adminToken")) {
     window.location.href = "login.html";
@@ -22,11 +21,9 @@ function displayFeedback(text, isErr = true) {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Pick up entry options from barcode fields
   const autoBarcode = document.getElementById("barcodeAuto").value.trim();
   const manualBarcode = document.getElementById("barcodeManual").value.trim();
 
-  // Rule assertion logic enforcement
   if (!autoBarcode && !manualBarcode) {
     displayFeedback(
       "Data input conflict: You must supply a Barcode tracking ID using either the Auto box or Manual input slot.",
@@ -42,7 +39,6 @@ form.addEventListener("submit", async (e) => {
 
   const finalBarcode = autoBarcode || manualBarcode;
 
-  // Extract configuration settings
   const preform_id = document.getElementById("preformId").value.trim();
   const machine = document.getElementById("machine").value;
   const operator_name = document.getElementById("operatorName").value.trim();
@@ -61,7 +57,6 @@ form.addEventListener("submit", async (e) => {
   );
   const shift = selectedShiftNode ? selectedShiftNode.value : "";
 
-  // Show status processing loader states
   submitBtn.disabled = true;
   submitBtn.innerHTML = `Saving Metrics Data Matrix... <span class="spinner"></span>`;
 
@@ -111,7 +106,6 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// Setup logout binding structural listeners
 document.getElementById("logoutBtn").addEventListener("click", () => {
   localStorage.clear();
   window.location.href = "login.html";

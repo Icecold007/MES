@@ -1,6 +1,5 @@
 const supabase = require("../config/supabase");
 
-// Save a newly drawn fiber component record
 exports.saveProductionEntry = async (req, res) => {
   try {
     const {
@@ -17,7 +16,6 @@ exports.saveProductionEntry = async (req, res) => {
       remarks,
     } = req.body;
 
-    // Direct architectural validation verification step
     if (
       !barcode_id ||
       !preform_id ||
@@ -48,7 +46,6 @@ exports.saveProductionEntry = async (req, res) => {
       });
     }
 
-    // Commit production entity row directly into PostgreSQL using Supabase Javascript SDK
     const { data, error } = await supabase
       .from("production_data")
       .insert([
@@ -83,7 +80,6 @@ exports.saveProductionEntry = async (req, res) => {
   }
 };
 
-// Pull a structural trace record via its specific barcode tag index
 exports.getReportByBarcode = async (req, res) => {
   try {
     const { barcodeId } = req.params;

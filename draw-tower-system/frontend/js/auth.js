@@ -5,7 +5,6 @@ const loginForm = document.getElementById("loginForm");
 const msgBox = document.getElementById("msgBox");
 const submitBtn = document.getElementById("submitBtn");
 
-// Shared utility helper to render API feedback messages elegantly
 function showMsg(text, isError = true) {
   if (!msgBox) return;
   msgBox.textContent = text;
@@ -25,7 +24,6 @@ function setSpinner(loading) {
   }
 }
 
-// Handling Admin Sign Up Form Actions
 if (signupForm) {
   signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -66,7 +64,6 @@ if (signupForm) {
   });
 }
 
-// Handling Authentication Log In Submissions
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -85,7 +82,6 @@ if (loginForm) {
       if (!response.ok) {
         showMsg(data.message || "Access Denied.");
       } else {
-        // Save access session data context directly inside browser local storage cache
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminEmail", data.user.email);
         window.location.href = "dashboard.html";
