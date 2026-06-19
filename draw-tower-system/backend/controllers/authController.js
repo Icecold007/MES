@@ -2,7 +2,6 @@ const supabase = require("../config/supabase");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// User Registration Flow
 exports.signUp = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -13,7 +12,6 @@ exports.signUp = async (req, res) => {
         .json({ message: "Email and password fields are strictly required." });
     }
 
-    // Check if user already exists
     const { data: existingUser } = await supabase
       .from("users")
       .select("id")
@@ -26,11 +24,9 @@ exports.signUp = async (req, res) => {
       });
     }
 
-    // Encrypt password string with standard 10 salt rounds
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
-    // Write straight to database
     const { data, error } = await supabase
       .from("users")
       .insert([{ email, password_hash: passwordHash }])
@@ -50,7 +46,6 @@ exports.signUp = async (req, res) => {
   }
 };
 
-// User Authorization Login Flow
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -61,7 +56,6 @@ exports.login = async (req, res) => {
       });
     }
 
-    // Locate the user record inside PostgreSQL
     const { data: user, error } = await supabase
       .from("users")
       .select("*")
@@ -72,17 +66,15 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials provided." });
     }
 
-    // Compare incoming password with hash
     const isMatch = await bcrypt.compare(password, user.password_hash);
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials provided." });
     }
 
-    // Generate JWT token containing context metadata
     const token = jwt.sign(
       { userId: user.id, email: user.email },
       process.env.JWT_SECRET,
-      { expiresIn: "8h" }, // Operational shift lifespan
+      { expiresIn: "8h" },
     );
 
     return res.status(200).json({
