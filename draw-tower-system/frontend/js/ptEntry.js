@@ -10,7 +10,6 @@ function feedback(text, isErr = true) {
   msgBox.style.display = "block";
 }
 
-// Event trigger setup matching input box status change blur values
 drawInput.addEventListener("change", async () => {
   const code = drawInput.value.trim();
   if (!code) return;

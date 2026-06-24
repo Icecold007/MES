@@ -2,7 +2,6 @@ const ALLOC_URL = "http://localhost:5000/api/pt-allocation";
 let activeAllocationsList = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Pull active database values straight onto the table interface upon viewing
   await refreshAllocationViewTable();
 });
 

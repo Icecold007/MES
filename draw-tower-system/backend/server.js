@@ -10,13 +10,13 @@ app.use(express.json());
 
 const authRoutes = require("./routes/authRoutes");
 const drawRoutes = require("./routes/drawRoutes");
-const ptEntryRoutes = require("./routes/ptEntryRoutes"); // Added
-const ptAllocationRoutes = require("./routes/ptAllocationRoutes"); // Added
+const ptEntryRoutes = require("./routes/ptEntryRoutes");
+const ptAllocationRoutes = require("./routes/ptAllocationRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/draw", drawRoutes);
-app.use("/api/pt-entry", ptEntryRoutes); // Added
-app.use("/api/pt-allocation", ptAllocationRoutes); // Added
+app.use("/api/pt-entry", ptEntryRoutes);
+app.use("/api/pt-allocation", ptAllocationRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "healthy", timestamp: new Date() });

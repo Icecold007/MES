@@ -9,7 +9,6 @@ exports.allocateEntries = async (req, res) => {
         .json({ message: "Missing required allocation filter parameters." });
     }
 
-    // Step 1: Query unallocated entries matching filter rules
     const { data: validEntries, error: fetchErr } = await supabase
       .from("pt_entries")
       .select(`id, pt_machine_no, draw_barcode_id (operator_name, shift)`)
@@ -17,7 +16,6 @@ exports.allocateEntries = async (req, res) => {
 
     if (fetchErr) throw fetchErr;
 
-    // Filter elements in memory since nested matching checks the legacy parent properties
     const targets = validEntries.filter(
       (entry) =>
         entry.draw_barcode_id &&
@@ -31,7 +29,6 @@ exports.allocateEntries = async (req, res) => {
       });
     }
 
-    // Step 2: Grab current allocation records to prevent constraint errors
     const { data: existingAllocations } = await supabase
       .from("pt_allocations")
       .select("pt_entry_id");
@@ -72,7 +69,6 @@ exports.allocateEntries = async (req, res) => {
 
 exports.getAllocations = async (req, res) => {
   try {
-    // Perform complex inner relational join through nested data blocks using Supabase
     const { data, error } = await supabase.from("pt_allocations").select(`
         id,
         pt_machine_no,
@@ -101,7 +97,7 @@ exports.getAllocations = async (req, res) => {
 
 exports.deleteAllocations = async (req, res) => {
   try {
-    const { ids } = req.body; // Array of allocation primary keys (UUID)
+    const { ids } = req.body;
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
       return res
         .status(400)
