@@ -51,7 +51,6 @@ form.addEventListener("submit", async (e) => {
     .value.trim();
   const remarks = document.getElementById("remarks").value.trim();
 
-  // Find active checked choice matching shift arrays
   const selectedShiftNode = document.querySelector(
     'input[name="shift"]:checked',
   );
